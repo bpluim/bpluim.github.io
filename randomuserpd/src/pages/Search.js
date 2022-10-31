@@ -42,7 +42,7 @@ const Search = () => {
         <AppBody>
             <InputUnstyled placeholder="Search..." value={search} onChange={(e) => {
                 setSearch(e.target.value)
-                _.debounce(filterMembers(e.target.value),300)
+                _.debounce(filterMembers(e.target.value), 1000)
                 }}/>
             {!loading ? 
                 <h3>Loading...</h3>
