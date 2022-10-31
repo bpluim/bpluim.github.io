@@ -27,7 +27,7 @@ const Search = () => {
     const filterMembers = (searchVal) => {
         setFilteredMembers(members.filter((member) => {
             const fullName = `${member.name.first} ${member.name.last}`;
-            
+
             if (member === '') {
                 return member
             } else if (member.name.first.toLowerCase().includes(searchVal.toLowerCase()) || member.name.last.toLowerCase().includes(searchVal.toLowerCase())) {
@@ -40,7 +40,7 @@ const Search = () => {
 
     return (
         <AppBody>
-            <InputUnstyled placeholder="search" value={search} onChange={(e) => {
+            <InputUnstyled placeholder="Search..." value={search} onChange={(e) => {
                 setSearch(e.target.value)
                 _.debounce(filterMembers(e.target.value),300)
                 }}/>
@@ -52,17 +52,17 @@ const Search = () => {
                     ? members.map(member => (
                         <Card sx={{ width: 200, textAlign: 'center', margin: '15px 5px', bgcolor: '#282c34', color: '#fff', padding: '10px 0' }} key={member.login.uuid}>
                             <MemberImage src={member.picture.thumbnail} />
-                            <p>{member.name.first} {member.name.last}</p>
+                            <h4>{member.name.first} {member.name.last}</h4>
                             <p>Age: {member.dob.age}</p>
-                            <Button variant="outlined" onClick={() => navigate(`/member/${member.login.uuid}`)}>View</Button>
+                            <Button variant="outlined" onClick={() => navigate(`/member/${member.login.uuid}`)}>View Profile</Button>
                         </Card>
                     ))
                     : filteredMembers.map(member => (
                         <Card sx={{ width: 200, textAlign: 'center', margin: '15px 5px', bgcolor: '#282c34', color: '#fff', padding: '10px 0' }} key={member.login.uuid}>
                             <MemberImage src={member.picture.medium} />
-                            <p>{member.name.first} {member.name.last}</p>
+                            <h4>{member.name.first} {member.name.last}</h4>
                             <p>Age: {member.dob.age}</p>
-                            <Button variant="outlined" onClick={() => navigate(`/member/${member.login.uuid}`)}>View</Button>
+                            <Button variant="outlined" onClick={() => navigate(`/member/${member.login.uuid}`)}>View Profile</Button>
                         </Card>
                     ))
                     }
